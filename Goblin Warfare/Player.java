@@ -15,7 +15,7 @@ public class Player extends ScrollActor
     private int reloadTime;
     private int score = 0;
 
-    private static final int MOVE_AMOUNT = 5;
+    private static final int MOVE_AMOUNT = 3;
 
     //constructer that initialize variables
     public Player(){
@@ -39,22 +39,23 @@ public class Player extends ScrollActor
 
     //moves around
     public void moveAround(){
-        if(Greenfoot.isKeyDown("A")){
-            setRotation(getRotation() - 3);
-            getWorld().setCameraDirection(getRotation());
+        if (Greenfoot.getMouseInfo() != null) {
+            // flip the character depend on mouse position
+            if (Greenfoot.getMouseInfo().getX() > getX()){
+                setImage(new GreenfootImage("spr_dig_strip13.png"));
+            } else if (Greenfoot.getMouseInfo().getX() < getX()){
+                setImage(new GreenfootImage("spr_dig_strip13_flip.png"));
+            }
         }
-        if(Greenfoot.isKeyDown("D")){
-            setRotation(getRotation() + 3);
-            getWorld().setCameraDirection(getRotation());
-        }
-        if(Greenfoot.isKeyDown("S")){
-            // move the camera backwards:
-            getWorld().moveCamera(-MOVE_AMOUNT/2);
-        }
-        else if(Greenfoot.isKeyDown("W")){
-            // move the camera forwards:
-            getWorld().moveCamera(MOVE_AMOUNT);
-        }
+        
+        if(Greenfoot.isKeyDown("W"))
+            getWorld().setCameraLocation(getWorld().getCameraX(), getWorld().getCameraY() - MOVE_AMOUNT);
+        if(Greenfoot.isKeyDown("A"))
+            getWorld().setCameraLocation(getWorld().getCameraX() - MOVE_AMOUNT, getWorld().getCameraY());
+        if(Greenfoot.isKeyDown("S"))
+            getWorld().setCameraLocation(getWorld().getCameraX(), getWorld().getCameraY() + MOVE_AMOUNT);
+        if(Greenfoot.isKeyDown("D"))
+            getWorld().setCameraLocation(getWorld().getCameraX() + MOVE_AMOUNT, getWorld().getCameraY());
     }   
 
     //checks if collsion with an object

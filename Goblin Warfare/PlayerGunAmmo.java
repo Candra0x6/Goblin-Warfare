@@ -78,22 +78,23 @@ public class PlayerGunAmmo extends ScrollActor
             mouseIsDown = true;  
         else if(Greenfoot.mouseClicked(null))  
             mouseIsDown = false;  
-        if(Greenfoot.isKeyDown("space")){
-            updateSpray();
-            if(counter > reloadTime){
-                if(myWeap == 0){
-                    if(mGunAmmo > 0){
-                        getWorld().addObject(new MGunBullet(sprayAccuracy), getGlobalX(), getGlobalY());
-                        GreenfootSound shotSound = new GreenfootSound("shot.mp3");
-                        shotSound.setVolume(30);
-                        shotSound.play();
-                        mGunAmmo--;
-                        counter = 0;
+        if (Greenfoot.getMouseInfo() != null)
+            if(Greenfoot.getMouseInfo().getButton() == 1){
+                updateSpray();
+                if(counter > reloadTime){
+                    if(myWeap == 0){
+                        if(mGunAmmo > 0){
+                            getWorld().addObject(new MGunBullet(sprayAccuracy), getGlobalX(), getGlobalY());
+                            GreenfootSound shotSound = new GreenfootSound("shot.mp3");
+                            shotSound.setVolume(30);
+                            shotSound.play();
+                            mGunAmmo--;
+                            counter = 0;
+                        }
                     }
+                                  
                 }
-                              
             }
-        }
     }
 
     public void updateSpray(){

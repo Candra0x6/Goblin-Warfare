@@ -23,7 +23,7 @@ public class ImageLabel extends Actor
         img.setColor(bgColor);
         img.fill();
         // draw text image on base image
-        img.drawImage(txtImg, 10, 5);
+        img.drawImage(txtImg, 0, 5);
         setImage(img);
     }
 }
