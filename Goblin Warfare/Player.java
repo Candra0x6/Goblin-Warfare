@@ -48,18 +48,14 @@ public class Player extends ScrollActor
             }
         }
         
-        if(Greenfoot.isKeyDown("W")){
+        if(Greenfoot.isKeyDown("W"))
             getWorld().setCameraLocation(getWorld().getCameraX(), getWorld().getCameraY() - MOVE_AMOUNT);
-        }
-        if(Greenfoot.isKeyDown("A")){
+        if(Greenfoot.isKeyDown("A"))
             getWorld().setCameraLocation(getWorld().getCameraX() - MOVE_AMOUNT, getWorld().getCameraY());
-        }
-        if(Greenfoot.isKeyDown("S")){
+        if(Greenfoot.isKeyDown("S"))
             getWorld().setCameraLocation(getWorld().getCameraX(), getWorld().getCameraY() + MOVE_AMOUNT);
-        }
-        if(Greenfoot.isKeyDown("D")){
+        if(Greenfoot.isKeyDown("D"))
             getWorld().setCameraLocation(getWorld().getCameraX() + MOVE_AMOUNT, getWorld().getCameraY());
-        }
     }   
 
     //checks if collsion with an object
